@@ -12,27 +12,27 @@ public class Order {
 
 
     @Embedded
-    private Address Address;
+    private Address address;
 
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product Product;
 
 
-    public hello.jpql.Product getProduct() {
+    public Product getProduct() {
         return Product;
     }
 
-    public void setProduct(hello.jpql.Product product) {
+    public void setProduct(Product product) {
         Product = product;
     }
 
     public hello.jpql.Address getAddress() {
-        return Address;
+        return address;
     }
 
-    public void setAddress(hello.jpql.Address address) {
-        Address = address;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public int getOrderAmount() {
