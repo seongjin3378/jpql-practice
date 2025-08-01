@@ -15,8 +15,8 @@ public class ProjectionExample {
         try {
             String[] userNames   = { "이아무개", "이아무개", "여아무개" };
             int[]    ages        = { 30, 30, 26};
-            String[]    productName = {"바나나 라떼 분말형 / 플라스틱 빨대 X 1000", "말차 라떼 분말형", "냉동딸기 지퍼백 1kg / 삼다수 2L * 6", };
-            int[]       productPrice = {103000, 10000, 52400};
+            String[]    productName = {"바나나 & 녹차 라떼 분말형 / 플라스틱 빨대 X 1000", "노트북", "냉동딸기 지퍼백 1kg / 삼다수 2L * 6", };
+            int[]       productPrice = {203000, 1000000, 52400};
             int       productStock = 91;
             String    city        = "아무개시";
             String    street      = "아무개동";
