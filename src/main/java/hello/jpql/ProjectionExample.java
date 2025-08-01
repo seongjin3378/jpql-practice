@@ -15,7 +15,7 @@ public class ProjectionExample {
         try {
             String[] userNames   = { "이아무개", "이아무개", "여아무개" };
             int[]    ages        = { 30, 30, 26};
-            String[]    productName = {"바나나 & 녹차 라떼 분말형 / 플라스틱 빨대 X 1000", "노트북", "냉동딸기 지퍼백 1kg / 삼다수 2L * 6", };
+            String[]    productName = {"바나나 & 말차 라떼 분말형 / 플라스틱 빨대 X 1000", "노트북", "냉동딸기 지퍼백 1kg / 삼다수 2L * 6", };
             int[]       productPrice = {203000, 1000000, 52400};
             int       productStock = 91;
             String    city        = "아무개시";
@@ -25,9 +25,14 @@ public class ProjectionExample {
 
 
             for(int i = 0; i < userNames.length; i++) {
+                TEAM team = new TEAM();
+                team.setName("아무개 팀");
+
                 Member member = new Member();
                 member.setUserName(userNames[i]);
                 member.setAge(ages[i]);
+                member.setTeam(team);
+
 
                 // --- Product 생성 & 설정 ---
                 Product product = new Product();
@@ -41,7 +46,7 @@ public class ProjectionExample {
                 order.setOrderAmount(orderAmount);
                 order.setProduct(product);
 
-
+                em.persist(team);
                 em.persist(member);
                 em.persist(product);
                 em.persist(order);
@@ -55,6 +60,8 @@ public class ProjectionExample {
             List<Member> members = em.createQuery("SELECT m from Member m", Member.class).getResultList();
             System.out.println("엔티티 프로젝션 = " + members.get(0).getUserName());
 
+            TEAM team =  em.createQuery("SELECT m.team from Member m order by m.id", TEAM.class).setMaxResults(1).getSingleResult();
+            System.out.println("엔티티 프로젝션 = " + team.getName());
 
             Address address = em.createQuery("SELECT o.address from Order o ORDER BY o.id", Address.class)
                     .setMaxResults(1)
@@ -80,6 +87,7 @@ public class ProjectionExample {
             }
 
         } catch (Exception e) {
+            e.printStackTrace();
             tx.rollback();
         } finally {
             em.close();

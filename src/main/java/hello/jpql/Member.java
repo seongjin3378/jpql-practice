@@ -14,6 +14,14 @@ public class Member {
     @JoinColumn(name = "team_id")
     private TEAM team;
 
+    public TEAM getTeam() {
+        return team;
+    }
+
+    public void setTeam(TEAM team) {
+        this.team = team;
+    }
+
     public Member(String userName, int age) {
         this.userName = userName;
         this.age = age;
