@@ -70,7 +70,7 @@ public class JoinExample {
             founds = em.createQuery("select m from Member m left join m.team t", Member.class).getResultList();
 
             
-            //놀 아무개는 team이 없기 때문에 null로 나옴
+
             for(Member m : founds) {
                 System.out.println("============LEFT JOIN============");
                 System.out.println(m.getUserName() + ", " + m.getTeam().getName());
