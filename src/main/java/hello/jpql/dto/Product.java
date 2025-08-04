@@ -1,4 +1,4 @@
-package hello.jpql;
+package hello.jpql.dto;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

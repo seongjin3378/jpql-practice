@@ -1,5 +1,7 @@
 package hello.jpql;
 
+import hello.jpql.dto.*;
+
 import javax.persistence.*;
 import java.util.List;
 

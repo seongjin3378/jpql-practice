@@ -1,4 +1,4 @@
-package hello.jpql;
+package hello.jpql.dto;
 
 import javax.persistence.*;
 
@@ -16,7 +16,7 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "product_id")
-    private Product Product;
+    private hello.jpql.dto.Product Product;
 
 
     public Product getProduct() {
@@ -27,7 +27,7 @@ public class Order {
         Product = product;
     }
 
-    public hello.jpql.Address getAddress() {
+    public Address getAddress() {
         return address;
     }
 

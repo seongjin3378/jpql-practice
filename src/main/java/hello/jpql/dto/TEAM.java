@@ -1,10 +1,7 @@
-package hello.jpql;
+package hello.jpql.dto;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,9 +14,14 @@ public class TEAM {
     private String name;
 
 
-    @OneToMany(mappedBy = "team")
+    @OneToMany(mappedBy = "team",   cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<Member> members = new ArrayList<Member>();
 
+
+    public void addMember(Member member) {
+        member.setTeam(this);
+        members.add(member);
+    }
 
     public Long getId() {
         return id;

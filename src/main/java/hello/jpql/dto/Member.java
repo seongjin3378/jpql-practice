@@ -1,4 +1,4 @@
-package hello.jpql;
+package hello.jpql.dto;
 
 import javax.persistence.*;
 
@@ -10,9 +10,15 @@ public class Member {
     private String userName;
     private int age;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "team_id")
     private TEAM team;
+
+
+    public void changeTeam(TEAM team) {
+        this.team = team;
+        team.addMember(this);
+    }
 
     public TEAM getTeam() {
         return team;
