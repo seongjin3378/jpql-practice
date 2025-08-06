@@ -9,11 +9,18 @@ public class Member {
     private Long id;
     private String userName;
     private int age;
-
+    private MemberType memberType;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "team_id")
     private TEAM team;
 
+    public MemberType getMemberType() {
+        return memberType;
+    }
+
+    public void setMemberType(MemberType memberType) {
+        this.memberType = memberType;
+    }
 
     public void changeTeam(TEAM team) {
         this.team = team;
