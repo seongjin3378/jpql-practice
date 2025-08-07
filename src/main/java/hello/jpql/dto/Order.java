@@ -10,13 +10,25 @@ public class Order {
     private long id;
     private int OrderAmount;
 
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    private String customerName;
+
 
     @Embedded
     private Address address;
 
+
+
     @ManyToOne
     @JoinColumn(name = "product_id")
-    private hello.jpql.dto.Product Product;
+    private Product Product;
 
 
     public Product getProduct() {

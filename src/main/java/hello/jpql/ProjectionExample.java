@@ -82,7 +82,7 @@ public class ProjectionExample {
                 System.out.println("distinct Age = "+ name+ ", distinct Name = "+ age );
             }
 
-            List<Member> newOperation = em.createQuery("SELECT NEW hello.jpql.Member(m.userName, m.age) FROM Member m", Member.class).getResultList();
+            List<Member> newOperation = em.createQuery("SELECT NEW hello.jpql.dto.Member(m.userName, m.age) FROM Member m", Member.class).getResultList();
 
             for(Member member : newOperation) {
                 System.out.println("newOperation Age = "+ member.getAge() + ", newOperation Name = "+ member.getUserName());
