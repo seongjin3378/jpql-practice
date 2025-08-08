@@ -15,7 +15,7 @@ public class TEAM {
 
 
     @OneToMany(mappedBy = "team",   cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-    private List<Member> members = new ArrayList<Member>();
+    private List<Member> members = new ArrayList<>();
 
 
     public void addMember(Member member) {
