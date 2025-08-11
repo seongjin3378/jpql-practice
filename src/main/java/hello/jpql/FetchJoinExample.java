@@ -54,7 +54,7 @@ public class FetchJoinExample {
             em.clear();
 
 
-            //fetch join 안쓰면 n+1 문제 발생
+/*            //fetch join 안쓰면 n+1 문제 발생
             String query = "select t from TEAM t join fetch t.members";
 
             List<TEAM> teamsList = em.createQuery(query, TEAM.class).getResultList();
@@ -65,11 +65,24 @@ public class FetchJoinExample {
             }
 
             query = "select distinct t from TEAM t join fetch t.members";
-            teamsList = em.createQuery(query, TEAM.class).getResultList();
+
+
+            teamsList = em.createQuery(query, TEAM.class)
+                   *//* .setFirstResult(0)
+                    .setMaxResults(2)*//* //fetch join 시 다(member)대일(team) 환경에서만 사용해야함
+                    .getResultList();
 
 
             //같은 식별자를 가진 entity를 jpql 내장 명령어로 삭제시킴
             System.out.println("=============== 중복 문제 해결 ===============");
+            for(TEAM t : teamsList) {
+                System.out.println(t.getName() + "member size : " + t.getMembers().size() );
+            }*/
+
+            String query = "select t from TEAM t";
+            List<TEAM> teamsList = em.createQuery(query, TEAM.class).setFirstResult(0).setMaxResults(2).getResultList();
+
+            System.out.println("=============== 1:N join fetch 페이징 문제 해결 ===============");
             for(TEAM t : teamsList) {
                 System.out.println(t.getName() + "member size : " + t.getMembers().size() );
             }
